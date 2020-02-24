@@ -18,12 +18,26 @@ namespace BikeWatcher.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Acceuil()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Liste()
+        {
+
+            var Stations = await Traitement.FindStations();
+            ViewBag.AllBikeStations = Stations;
+            
+            return View();
+        }
+
+        public IActionResult Carte()
+        {
+            return View();
+        }
+
+        public IActionResult Favoris()
         {
             return View();
         }
