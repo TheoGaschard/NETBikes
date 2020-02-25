@@ -28,13 +28,14 @@ namespace BikeWatcher.Controllers
 
             var Stations = await Traitement.FindStations();
 
-            
             return View(Stations);
         }
 
-        public IActionResult Carte()
+        public async Task<IActionResult> CarteAsync()
         {
-            return View();
+            var Stations = await Traitement.FindStations();
+
+            return View(Stations);
         }
 
         public IActionResult Favoris()
