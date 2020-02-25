@@ -27,9 +27,9 @@ namespace BikeWatcher.Controllers
         {
 
             var Stations = await Traitement.FindStations();
-            ViewBag.AllBikeStations = Stations;
+
             
-            return View();
+            return View(Stations);
         }
 
         public IActionResult Carte()

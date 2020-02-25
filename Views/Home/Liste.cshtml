@@ -1,13 +1,34 @@
-﻿@{
+﻿@model List<Station>
+@{
+
     ViewData["Title"] = "Liste des stations";
 
-    var Datastations = ViewBag.AllBikeStations;
 }
 <h1>@ViewData["Title"]</h1>
 
 <p>La liste des stations du réseau du vélo</p>
 
-@foreach (var station in Datastations)
-{<p>@station.available_bikes vélos réstants. Adresse :  @station.address</p>
+<div id="ConteneurStations">
+    @foreach (var station in Model)
+    {
+        <div class="CarteStation">
 
-}
+            <h3>@station.name</h3>
+            <p>
+                @station.available_bikes vélos restants <br>
+                @station.address
+            </p>
+        </div>
+    }
+</div>
+
+<style>
+    #ConteneurStations{
+        /*display: inline-block;*/
+    }
+
+    .CarteStation{
+        border-bottom: solid 1px black;
+    }
+
+</style>

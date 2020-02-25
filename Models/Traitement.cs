@@ -15,14 +15,16 @@ namespace BikeWatcher.Models
 
         public static async Task<List<Station>> FindStations()
         {
-            // Connection à l'API
+            // Connection à l'API, récupération du json
             var streamTask = client.GetStreamAsync("https://download.data.grandlyon.com/ws/rdata/jcd_jcdecaux.jcdvelov/all.json");
 
             // déserialisation du json en objet
             var RetourAPI = await JsonSerializer.DeserializeAsync<RootObject>(await streamTask);
 
-
             var ListeStations = RetourAPI.values;
+
+            // Tri par nom
+            ListeStations.Sort((x, y) => x.name.CompareTo(y.name));
 
             return ListeStations;
 
