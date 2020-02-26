@@ -47,6 +47,7 @@ namespace BikeWatcher.Models
             lat = stationBdx.latitude;
             lng = stationBdx.longitude;
             name = stationBdx.name;
+            available_bike_stands =  stationBdx.slot_count.ToString();
             status = stationBdx.is_online ? "OPEN" : "CLOSED";
             available_bikes = stationBdx.bike_count_total.ToString();
         }

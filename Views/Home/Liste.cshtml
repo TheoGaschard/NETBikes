@@ -9,23 +9,39 @@
 <p>La liste des stations du réseau du vélo</p>
 
 <div id="ConteneurStations">
-    @foreach (var station in Model)
-    {
-        <div class="CarteStation">
+    
+    
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th scope="col">Nom de la station</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Commune</th>
+                    <th scope="col">Vélos disponibles</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var bike in Model)
+                {
 
-            <h3>@station.name</h3>
-            <p>
-                @station.available_bikes vélos restants <br>
-                @station.address
-            </p>
-        </div>
-    }
+                    <tr>
+                        <th scope="row"></th>
+                        <td>@bike.name</td>
+                        <td>@bike.address</td>
+                        <td>@bike.commune</td>
+                        <td>@bike.available_bikes</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    
+    
+    
 </div>
 
 <style>
-    #ConteneurStations{
-        /*display: inline-block;*/
-    }
+    
 
     .CarteStation{
         border-bottom: solid 1px black;
