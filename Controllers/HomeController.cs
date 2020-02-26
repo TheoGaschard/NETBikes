@@ -31,9 +31,20 @@ namespace BikeWatcher.Controllers
             return View(Stations);
         }
 
-        public async Task<IActionResult> CarteAsync()
+        public async Task<IActionResult> Carte()
         {
             var Stations = await Traitement.FindStations();
+            var StationsBdx = await Traitement.FindStationsBdx();
+
+            var ResultBdx = new List<Station>();
+            foreach (var stationBdx in StationsBdx)
+            {
+                var construit = new Station(stationBdx);
+                ResultBdx.Add(construit);
+            }
+
+            Stations.AddRange(ResultBdx);
+
 
             return View(Stations);
         }

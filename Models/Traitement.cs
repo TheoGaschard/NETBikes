@@ -27,9 +27,20 @@ namespace BikeWatcher.Models
             ListeStations.Sort((x, y) => x.name.CompareTo(y.name));
 
             return ListeStations;
-
         }
 
+        public static async Task<List<StationBdx>> FindStationsBdx()
+        {
+            // Connection à l'API, récupération du json
+            var streamTask = client.GetStreamAsync("https://api.alexandredubois.com/vcub-backend/vcub.php");
+
+            // déserialisation du json en objet
+            var RetourAPI = await JsonSerializer.DeserializeAsync<List<StationBdx>>(await streamTask);
+
+            var ListeStations = RetourAPI;
+
+            return ListeStations;
+        }
 
 
 
